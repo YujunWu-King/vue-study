@@ -7,18 +7,18 @@ function resolve (dir) {
 
 module.exports = {
   lintOnSave: false,
-  chainWebpack: config => {
-  	config.resolve.alias
-  	 // key,value自行定义，比如.set('@@', resolve('src/components'))
-  	.set("@",resolve("src"))
-  	.set("css", resolve("src/assets/css"))
-  	.set("img", resolve("src/assets/img"))
-  	.set("common", resolve("src/common"))
-  	.set("components", resolve("src/components"))
-  	.set("network", resolve("src/network"))
-  	.set("router", resolve("src/router"))
-  	.set("store", resolve("src/store"))
-  	.set("views", resolve("src/views"))
- 	}
+  configureWebpack:{
+    resolve:{
+      alias:{
+         "src":resolve("@"),
+         "css": resolve("src/assets/css"),
+         "img": resolve("src/assets/img"),
+         "common": resolve("src/common"),
+         "components": resolve("src/components"),
+         "network": resolve("src/network"),
+         "views": resolve("src/views")
+      }
+    }
+  }
 }
 
