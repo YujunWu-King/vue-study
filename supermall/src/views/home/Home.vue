@@ -3,19 +3,23 @@
 		<nav-bar  class='home-nav'>
 			<div slot='center'>购物车</div>
 		</nav-bar>
+
 		<ban-ner :sliders='banner'></ban-ner>
+		<recommend-view :recommends='recommends'></recommend-view>
 	</div>
 </template>
 
 <script>
 	import NavBar from 'components/common/navbar/NavBar'
 	import BanNer from 'components/common/banner/BanNer'
+	import RecommendView from './childComps/HomeRecommendView'
 	import {getHomeMultidata} from 'network/home'
 	export default {
 		name:'Home',
 		components:{
 			NavBar,
-			BanNer
+			BanNer,
+			RecommendView
 		},
 		created(){
 			//请求多个数据
@@ -26,8 +30,8 @@
 					});
 					this.dKeyword = res.data.dKeyword.list;
 					this.keywords = res.data.keywords.list;
-					this.recommend = res.data.recommend.list;
-					console.log(this.banner)
+					this.recommends = res.data.recommend.list;
+					console.log(this.recommends)
 				},err =>{
 
 				})
@@ -37,7 +41,7 @@
 				banner:[],
 				dKeyword:[],
 				keywords:[],
-				recommend:[]
+				recommends:[]
 			}
 		}
 	}
