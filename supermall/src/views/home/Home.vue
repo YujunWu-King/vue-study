@@ -6,6 +6,7 @@
 
 		<ban-ner :sliders='banner'></ban-ner>
 		<recommend-view :recommends='recommends'></recommend-view>
+		<tab-control :titles='titles'></tab-control>
 	</div>
 </template>
 
@@ -14,12 +15,15 @@
 	import BanNer from 'components/common/banner/BanNer'
 	import RecommendView from './childComps/HomeRecommendView'
 	import {getHomeMultidata} from 'network/home'
+
+	import TabControl from 'components/content/tabControl'
 	export default {
 		name:'Home',
 		components:{
-			NavBar,
 			BanNer,
-			RecommendView
+			RecommendView,
+			NavBar,
+			TabControl
 		},
 		created(){
 			//请求多个数据
@@ -41,7 +45,8 @@
 				banner:[],
 				dKeyword:[],
 				keywords:[],
-				recommends:[]
+				recommends:[],
+				titles:['流行','新款','精选']
 			}
 		}
 	}
